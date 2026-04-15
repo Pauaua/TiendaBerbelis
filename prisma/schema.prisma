@@ -1,0 +1,73 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = []
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String
+  slug      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  slug        String      @unique
+  description String?
+  price       Decimal     @db.Decimal(10, 2)
+  image       String?
+  stock       Int         @default(0)
+  featured    Boolean     @default(false)
+  active      Boolean     @default(true)
+  categoryId  Int?
+  category    Category?   @relation(fields: [categoryId], references: [id])
+  orderItems  OrderItem[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  customerName String
+  email        String
+  phone        String?
+  address      String?
+  total        Decimal     @db.Decimal(10, 2)
+  status       OrderStatus @default(PENDING)
+  items        OrderItem[]
+  createdAt    DateTime    @default(now())
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int
+  price     Decimal @db.Decimal(10, 2)
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}

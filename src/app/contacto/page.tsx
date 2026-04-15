@@ -1,0 +1,148 @@
+"use client";
+
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, Check } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function ContactoPage() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setError("Hubo un error al enviar tu mensaje. Intenta de nuevo.");
+      }
+    } catch {
+      setError("Hubo un error al enviar tu mensaje. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-50">
+      <Navbar />
+      <main className="pt-24 pb-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Contácta<span className="text-purple-600">nos</span>
+            </h1>
+            <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-violet-600 mx-auto rounded-full" />
+            <p className="text-gray-600 mt-4">Estamos aquí para ayudarte</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Info */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-purple-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Información de contacto</h2>
+                {[
+                  { icon: <Mail className="w-5 h-5" />, label: "Email", value: "hola@berbelis.com" },
+                  { icon: <Phone className="w-5 h-5" />, label: "Teléfono", value: "+1 (555) 123-4567" },
+                  { icon: <MapPin className="w-5 h-5" />, label: "Ubicación", value: "Ciudad, País" },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-start gap-4 mb-5">
+                    <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 flex-shrink-0">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">{item.label}</p>
+                      <p className="font-semibold text-gray-900">{item.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-gradient-to-br from-purple-600 to-violet-700 rounded-2xl p-8 text-white">
+                <h3 className="text-xl font-bold mb-3">¿Por qué elegirnos?</h3>
+                <ul className="space-y-2 text-purple-100 text-sm">
+                  <li>✓ Productos 100% naturales y orgánicos</li>
+                  <li>✓ Envíos rápidos y seguros</li>
+                  <li>✓ Atención personalizada</li>
+                  <li>✓ Garantía de satisfacción</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Form */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-purple-100">
+              {sent ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">¡Mensaje enviado!</h3>
+                  <p className="text-gray-600">Te responderemos a la brevedad posible.</p>
+                  <button
+                    onClick={() => setSent(false)}
+                    className="mt-6 px-6 py-2 text-purple-600 border border-purple-300 rounded-full hover:bg-purple-50 transition-all"
+                  >
+                    Enviar otro mensaje
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Envíanos un mensaje</h2>
+                  {error && (
+                    <p className="text-red-500 text-sm bg-red-50 p-3 rounded-xl">{error}</p>
+                  )}
+                  {[
+                    { name: "name", label: "Nombre completo", type: "text" },
+                    { name: "email", label: "Correo electrónico", type: "email" },
+                  ].map((field) => (
+                    <div key={field.name}>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        {field.label}
+                      </label>
+                      <input
+                        type={field.type}
+                        required
+                        value={form[field.name as keyof typeof form]}
+                        onChange={(e) => setForm((f) => ({ ...f, [field.name]: e.target.value }))}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400"
+                      />
+                    </div>
+                  ))}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Mensaje</label>
+                    <textarea
+                      required
+                      rows={5}
+                      value={form.message}
+                      onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3.5 bg-gradient-to-r from-purple-500 to-violet-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+                  >
+                    {loading ? "Enviando..." : (<><Send className="w-5 h-5" />Enviar mensaje</>)}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}
