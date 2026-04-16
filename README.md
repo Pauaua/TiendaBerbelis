@@ -60,8 +60,6 @@ DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/berbelis?schema=public"
 ADMIN_PASSWORD="tu_password_seguro"
 ```
 
-Para desarrollo local puedes usar [Neon](https://neon.tech) (plan gratuito) o una instancia local de PostgreSQL.
-
 ### 3. Crear las tablas en la base de datos
 
 ```bash
@@ -74,16 +72,7 @@ npx prisma migrate dev --name init
 npx prisma generate
 ```
 
-### 5. Cargar datos de ejemplo (opcional)
-
-Con el servidor corriendo, ejecuta:
-
-```bash
-curl -X POST http://localhost:3000/api/admin/seed \
-  -H "x-admin-password: tu_password_seguro"
-```
-
-### 6. Iniciar el servidor de desarrollo
+### 5. Iniciar el servidor de desarrollo
 
 ```bash
 npm run dev
