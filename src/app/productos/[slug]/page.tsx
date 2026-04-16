@@ -55,7 +55,7 @@ export default async function ProductoDetallePage({ params }: Props) {
               )}
             </div>
 
-            <div className="p-8 md:p-12 flex flex-col justify-center space-y-5">
+            <div className="p-5 sm:p-8 md:p-12 flex flex-col justify-center space-y-5">
               {product.category && (
                 <span className="text-sm text-[#6B8F3A] font-medium uppercase tracking-wide">
                   {product.category.name}
@@ -68,7 +68,7 @@ export default async function ProductoDetallePage({ params }: Props) {
                 ))}
                 <span className="ml-2 text-gray-500 text-sm">(4.9)</span>
               </div>
-              <p className="text-4xl font-bold text-[#6B8F3A]">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#6B8F3A]">
                 ${Number(product.price).toFixed(2)}
               </p>
               {product.description && (

@@ -36,7 +36,7 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-50 flex items-center justify-center px-4">
-      <div className="bg-white rounded-3xl shadow-xl p-10 w-full max-w-md">
+      <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-10 w-full max-w-md">
         <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
           <Lock className="w-8 h-8 text-white" />
         </div>

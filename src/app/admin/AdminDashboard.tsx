@@ -116,7 +116,7 @@ export default function AdminDashboard({ password }: { password: string }) {
 
       <div className="max-w-6xl mx-auto p-6">
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           {[
             { label: "Productos", value: products.length, color: "purple" },
             { label: "Pedidos", value: orders.length, color: "violet" },
@@ -130,7 +130,7 @@ export default function AdminDashboard({ password }: { password: string }) {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6">
           {tabs.map((t) => (
             <button
               key={t.id}
@@ -145,9 +145,9 @@ export default function AdminDashboard({ password }: { password: string }) {
         {/* Products tab */}
         {tab === "products" && (
           <div>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
               <h2 className="text-xl font-bold text-gray-900">Productos</h2>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <button
                   onClick={handleSeed}
                   disabled={seeding}
@@ -171,7 +171,7 @@ export default function AdminDashboard({ password }: { password: string }) {
                   <h3 className="font-bold text-gray-900">{editId ? "Editar" : "Nuevo"} producto</h3>
                   <button onClick={() => setShowForm(false)}><X className="w-5 h-5 text-gray-400" /></button>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
                     { key: "name", label: "Nombre", type: "text" },
                     { key: "price", label: "Precio ($)", type: "number" },
@@ -217,8 +217,8 @@ export default function AdminDashboard({ password }: { password: string }) {
               </div>
             )}
 
-            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-              <table className="w-full text-sm">
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden overflow-x-auto">
+              <table className="w-full text-sm min-w-[600px]">
                 <thead className="bg-purple-50">
                   <tr>
                     {["Producto", "Precio", "Stock", "Estado", "Acciones"].map((h) => (
@@ -261,8 +261,8 @@ export default function AdminDashboard({ password }: { password: string }) {
         {tab === "orders" && (
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-4">Pedidos</h2>
-            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-              <table className="w-full text-sm">
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden overflow-x-auto">
+              <table className="w-full text-sm min-w-[640px]">
                 <thead className="bg-purple-50">
                   <tr>
                     {["#", "Cliente", "Email", "Total", "Estado", "Fecha"].map((h) => (

@@ -68,7 +68,7 @@ export default async function Home() {
               <div className="inline-block px-4 py-2 bg-[#B8A0D8]/20 border border-[#B8A0D8]/40 rounded-full">
                 <span className="text-[#2D1B4E] font-semibold">✨ Naturaleza y Bienestar</span>
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold text-[#2D1B4E] leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#2D1B4E] leading-tight">
                 Belleza Natural para tu{" "}
                 <span className="text-[#6B8F3A]">
                   Piel
@@ -113,7 +113,7 @@ export default async function Home() {
       <section id="quienes-somos" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#2D1B4E] mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D1B4E] mb-4">
               ¿Quiénes <span className="text-[#6B8F3A]">Somos?</span>
             </h2>
             <div className="w-20 h-1 bg-[#B8A0D8] mx-auto rounded-full" />
@@ -146,7 +146,7 @@ export default async function Home() {
       <section className="py-20 px-4 bg-[#FAF8F5]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#2D1B4E] mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D1B4E] mb-4">
               Nuestros <span className="text-[#6B8F3A]">Productos</span>
             </h2>
             <div className="w-20 h-1 bg-[#B8A0D8] mx-auto rounded-full" />
@@ -236,7 +236,7 @@ export default async function Home() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#2D1B4E] mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D1B4E] mb-4">
               Lo que dicen nuestros <span className="text-[#6B8F3A]">Clientes</span>
             </h2>
             <div className="w-20 h-1 bg-[#B8A0D8] mx-auto rounded-full" />
@@ -258,8 +258,8 @@ export default async function Home() {
       {/* CTA Contacto */}
       <section className="py-20 px-4 bg-[#2D1B4E] text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">¿Lista para comenzar tu transformación natural?</h2>
-          <p className="text-xl mb-8 text-[#B8A0D8]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">¿Lista para comenzar tu transformación natural?</h2>
+          <p className="text-base sm:text-xl mb-8 text-[#B8A0D8]">
             Contáctanos y descubre cómo nuestros productos pueden ayudarte
           </p>
           <div className="flex flex-wrap justify-center gap-4">

@@ -40,17 +40,17 @@ export default function ContactoPage() {
       <main className="pt-24 pb-20 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-[#2D1B4E] mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D1B4E] mb-4">
               Contácta<span className="text-[#6B8F3A]">nos</span>
             </h1>
             <div className="w-20 h-1 bg-[#B8A0D8] mx-auto rounded-full" />
             <p className="text-[#2D1B4E]/70 mt-4">Estamos aquí para ayudarte</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Info */}
             <div className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-[#B8A0D8]/30">
+              <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-[#B8A0D8]/30">
                 <h2 className="text-2xl font-bold text-[#2D1B4E] mb-6">Información de contacto</h2>
                 {[
                   { icon: <Mail className="w-5 h-5" />, label: "Email", value: "fitoterapiamtch@gmail.com" },
@@ -81,7 +81,7 @@ export default function ContactoPage() {
             </div>
 
             {/* Form */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-[#B8A0D8]/30">
+            <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-[#B8A0D8]/30">
               {sent ? (
                 <div className="text-center py-8">
                   <div className="w-16 h-16 bg-[#6B8F3A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -123,7 +123,7 @@ export default function ContactoPage() {
                     <label className="block text-sm font-medium text-[#2D1B4E] mb-1.5">Mensaje</label>
                     <textarea
                       required
-                      rows={5}
+                      rows={3}
                       value={form.message}
                       onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#B8A0D8] resize-none"

@@ -66,14 +66,14 @@ export default function ProductosPage() {
       {/* Header */}
       <section className="pt-32 pb-12 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl font-bold text-[#2D1B4E] mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2D1B4E] mb-4">
             Nuestros{" "}
             <span className="text-[#6B8F3A]">
               Productos
             </span>
           </h1>
           <div className="w-20 h-1 bg-[#B8A0D8] mx-auto rounded-full mb-6" />
-          <p className="text-xl text-[#2D1B4E]/70 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-[#2D1B4E]/70 max-w-2xl mx-auto">
             Descubre nuestra colección completa de productos orgánicos y naturales
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function ProductosPage() {
         <div className="max-w-7xl mx-auto">
 
           {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#B8A0D8]/30 animate-pulse">
                   <div className="h-64 bg-[#B8A0D8]/20" />
@@ -112,7 +112,7 @@ export default function ProductosPage() {
             </div>
           ) : (
             <>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {paginated.map((product) => (
                   <div
                     key={product.id}

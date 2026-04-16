@@ -84,11 +84,11 @@ export default function CarritoPage() {
               </Link>
             </div>
           ) : (
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Items */}
               <div className="lg:col-span-2 space-y-4">
                 {items.map((item) => (
-                  <div key={item.id} className="bg-white rounded-2xl p-5 shadow-sm flex items-center gap-4">
+                  <div key={item.id} className="bg-white rounded-2xl p-4 shadow-sm flex flex-wrap sm:flex-nowrap items-center gap-4">
                     <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[#FAF8F5] flex-shrink-0">
                       {item.image ? (
                         <Image src={item.image} alt={item.name} fill className="object-cover" />
