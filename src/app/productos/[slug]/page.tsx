@@ -27,20 +27,20 @@ export default async function ProductoDetallePage({ params }: Props) {
   if (!product) notFound();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-50">
+    <div className="min-h-screen bg-[#FAF8F5]">
       <Navbar />
       <main className="pt-24 pb-20 px-4">
         <div className="max-w-5xl mx-auto">
           <Link
             href="/productos"
-            className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 mb-8 font-medium"
+            className="inline-flex items-center gap-2 text-[#2D1B4E] hover:text-[#6B8F3A] mb-8 font-medium"
           >
             <ArrowLeft className="w-4 h-4" />
             Volver a productos
           </Link>
 
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-2">
-            <div className="relative h-80 md:h-full min-h-80 bg-purple-50">
+            <div className="relative h-80 md:h-full min-h-80 bg-[#FAF8F5]">
               {product.image ? (
                 <Image
                   src={product.image}
@@ -50,35 +50,35 @@ export default async function ProductoDetallePage({ params }: Props) {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                  <Leaf className="w-24 h-24 text-purple-200" />
+                  <Leaf className="w-24 h-24 text-[#B8A0D8]/50" />
                 </div>
               )}
             </div>
 
             <div className="p-8 md:p-12 flex flex-col justify-center space-y-5">
               {product.category && (
-                <span className="text-sm text-purple-500 font-medium uppercase tracking-wide">
+                <span className="text-sm text-[#6B8F3A] font-medium uppercase tracking-wide">
                   {product.category.name}
                 </span>
               )}
-              <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-[#2D1B4E]">{product.name}</h1>
               <div className="flex text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
                 <span className="ml-2 text-gray-500 text-sm">(4.9)</span>
               </div>
-              <p className="text-4xl font-bold text-purple-600">
+              <p className="text-4xl font-bold text-[#6B8F3A]">
                 ${Number(product.price).toFixed(2)}
               </p>
               {product.description && (
-                <p className="text-gray-600 leading-relaxed">{product.description}</p>
+                <p className="text-[#2D1B4E]/70 leading-relaxed">{product.description}</p>
               )}
               <div className="flex items-center gap-2">
                 <span
                   className={`inline-block w-3 h-3 rounded-full ${product.stock > 0 ? "bg-green-500" : "bg-red-400"}`}
                 />
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-[#2D1B4E]/70">
                   {product.stock > 0 ? `En stock (${product.stock} disponibles)` : "Agotado"}
                 </span>
               </div>

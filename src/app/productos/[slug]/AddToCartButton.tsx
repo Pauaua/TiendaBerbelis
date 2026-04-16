@@ -29,8 +29,8 @@ export default function AddToCartButton({ product }: Props) {
       onClick={handleAdd}
       className={`w-full py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-all ${
         added
-          ? "bg-green-500 text-white"
-          : "bg-gradient-to-r from-purple-500 to-violet-600 text-white hover:shadow-xl hover:shadow-purple-300"
+          ? "bg-[#6B8F3A] text-white"
+          : "bg-[#2D1B4E] text-white hover:bg-[#3d2660] hover:shadow-xl"
       }`}
     >
       {added ? (
