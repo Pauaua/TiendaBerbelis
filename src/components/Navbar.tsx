@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Leaf, ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
+import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -18,17 +19,19 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed w-full bg-white/95 backdrop-blur-md shadow-md z-50">
+    <nav className="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-[#2D1B4E]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center">
-              <Leaf className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent">
-              Berbelis
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo-horizontal.png"
+              alt="Berbelis Fitocreaciones"
+              width={180}
+              height={56}
+              className="h-12 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop links */}
@@ -39,8 +42,8 @@ export default function Navbar() {
                 href={l.href}
                 className={
                   pathname === l.href
-                    ? "text-purple-600 font-semibold"
-                    : "text-gray-700 hover:text-purple-600 transition-colors"
+                    ? "text-[#2D1B4E] font-semibold border-b-2 border-[#B8A0D8] pb-0.5"
+                    : "text-[#2D1B4E]/70 hover:text-[#2D1B4E] transition-colors font-medium"
                 }
               >
                 {l.label}
@@ -52,19 +55,19 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/carrito"
-              className="relative flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-purple-500 to-violet-600 text-white rounded-full hover:shadow-lg hover:shadow-purple-300 transition-all"
+              className="relative flex items-center space-x-2 px-5 py-2 bg-[#2D1B4E] text-white rounded-full hover:bg-[#3d2660] hover:shadow-lg transition-all"
             >
               <ShoppingBag className="w-5 h-5" />
               <span className="hidden md:inline">Carrito</span>
               {count > 0 && (
-                <span className="absolute -top-2 -right-2 w-5 h-5 bg-yellow-400 text-gray-900 text-xs font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-[#B8A0D8] text-[#2D1B4E] text-xs font-bold rounded-full flex items-center justify-center">
                   {count}
                 </span>
               )}
             </Link>
             {/* Mobile menu */}
             <button
-              className="md:hidden p-2 text-gray-700"
+              className="md:hidden p-2 text-[#2D1B4E]"
               onClick={() => setOpen(!open)}
             >
               {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -75,13 +78,13 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="md:hidden bg-white border-t border-purple-100 px-4 py-4 space-y-3">
+        <div className="md:hidden bg-white border-t border-[#2D1B4E]/10 px-4 py-4 space-y-3">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block text-gray-700 hover:text-purple-600 font-medium py-1"
+              className="block text-[#2D1B4E] hover:text-[#6B8F3A] font-medium py-1"
             >
               {l.label}
             </Link>

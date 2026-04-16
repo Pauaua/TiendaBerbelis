@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAF8F5;
+  --foreground: #2D1B4E;
+
+  /* Paleta Berbelis */
+  --brand-navy:    #2D1B4E;
+  --brand-lavender:#B8A0D8;
+  --brand-green:   #6B8F3A;
+  --brand-green-light: #A4C86F;
+  --brand-cream:   #FAF8F5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-montserrat);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Colores de marca disponibles como clases Tailwind */
+  --color-brand-navy:         var(--brand-navy);
+  --color-brand-lavender:     var(--brand-lavender);
+  --color-brand-green:        var(--brand-green);
+  --color-brand-green-light:  var(--brand-green-light);
+  --color-brand-cream:        var(--brand-cream);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
 }
